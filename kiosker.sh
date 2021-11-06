@@ -38,7 +38,7 @@ sudo apt -y clean
 sudo apt -y install --no-install-recommends xserver-xorg
 sudo apt -y install raspberrypi-ui-mods
 sudo apt -y install rpd-icons gtk2-engines-clearlookspix
-sudo apt -y install unclutter ntpdate at-spi2-core libnotify-bin mate-notification-daemon mate-notification-daemon-common
+sudo apt -y install unclutter ntpdate at-spi2-core libnotify-bin mate-notification-daemon mate-notification-daemon-common chromium-browser
 sudo apt -y remove  geany thonny qpdfview xarchiver gpicview galculator mousepad
 sudo apt -y autoremove
 mkdir -p ~/.config/lxsession/LXDE-pi
