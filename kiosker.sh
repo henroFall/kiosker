@@ -5,7 +5,7 @@
 
 echo -e ""
 
-echo -e "\033[2A\033[97mHere goes the Kiosk installer... You need to enter a URL here for the Kiosk to launch to: \033[0m\c"
+echo -e "\033[2A\033[97mHere goes the Kiosk installer... You need to enter a URL here for the Kiosk to launch to: \033[0m"
 read URL
 echo
 echo -e "The URL is set to: $URL \e[0m"
@@ -31,7 +31,7 @@ echo -e "The URL is set to: $URL \e[0m"
  esac
 done
 URL=\"$URL\"
-echo -e "\033[2A\033[97mOK - URL set. Doing my business now, hang on...\033[0m\c"
+echo -e "\033[2A\033[97mOK - URL set. Doing my business now, hang on...\033[0m"
 sudo apt -y update
 sudo apt -y dist-upgrade
 sudo apt -y clean
