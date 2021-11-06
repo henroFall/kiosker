@@ -4,7 +4,6 @@
 # Then, you can run this script locally or via a remote termina.
 
 echo -e ""
-
 echo -e "\033[2A\033[97mHere goes the Kiosk installer... You need to enter a URL here for the Kiosk to launch to: \033[0m"
 read URL
 echo
