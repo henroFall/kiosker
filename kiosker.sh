@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# First, boot your RPI and run raspi-config to set locale, enable networking, etc.
+# First, boot your RPI and run raspi-config to set locale, enable networking, enable pi user to autologin, etc.
 # Then, you can run this script locally or via a remote termina.
 
 echo -e ""
@@ -61,6 +61,7 @@ done
 notify-send -t 500 \"Connected.\" &> /dev/null
 notify-send -t 3000 \"Starting browser...\" &> /dev/null
 chromium-browser --incognito --app=$URL --start-fullscreen --check-for-update-interval=31536000 --overscroll-history-navigation=0 --disable-pinch" > ~/autostart.sh
+chmod +x ~/autostart.sh
 
 echo -e "OK, I'm done. Reboot this thing and it will pop up to your prescribed page."
 echo -e "If you messed up the URL, edit /home/pi/autostart.sh to correct the URL."
