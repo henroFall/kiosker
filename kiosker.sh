@@ -4,9 +4,8 @@
 # Then, you can run this script locally or via a remote termina.
 
 echo -e ""
-echo "You really should run this through SSH, just to prove you can."
 echo -e ""
-echo "Before you start, use raspi-config to:
+echo "Before you start, use raspi-config to do most of this:
 System       S1 - Wireless LAN
 System       S3 - Password for Pi
 System       S4 - Hostname for Kiosk
@@ -99,6 +98,7 @@ done
 notify-send -t 500 \"Connected.\" &> /dev/null
 notify-send -t 3000 \"Starting browser...\" &> /dev/null
 chromium-browser --incognito --app=$URL --start-fullscreen --check-for-update-interval=31536000 --overscroll-history-navigation=0 --disable-pinch" > ~/autostart.sh
+chmod +x ~/autostart
 chmod +x ~/autostart.sh
 echo -e We are going to set the VNC password now to be sure you are in a compatible mode:
 
