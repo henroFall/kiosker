@@ -74,9 +74,8 @@ sudo apt -y update
 sudo apt -y dist-upgrade
 sudo apt -y install --no-install-recommends xserver-xorg
 sudo apt -y install raspberrypi-ui-mods
-sudo apt -y install rpd-icons gtk2-engines-clearlookspix
-sudo apt -y install unclutter ntpdate at-spi2-core libnotify-bin mate-notification-daemon mate-notification-daemon-common chromium-browser
-sudo apt -y remove  geany thonny qpdfview xarchiver gpicview galculator mousepad
+sudo apt -y install rpd-icons gtk2-engines-clearlookspix unclutter ntpdate at-spi2-core libnotify-bin mate-notification-daemon mate-notification-daemon-common chromium-browser
+sudo apt -y remove geany thonny qpdfview xarchiver gpicview galculator mousepad
 sudo apt -y autoremove
 sudo apt -y clean
 
@@ -98,7 +97,7 @@ done
 
 notify-send -t 500 \"Connected.\" &> /dev/null
 notify-send -t 3000 \"Starting browser...\" &> /dev/null
-chromium-browser --incognito --app=$URL --start-fullscreen --check-for-update-interval=31536000 --overscroll-history-navigation=0 --disable-pinch" > ~/autostart.sh
+chromium-browser --incognito --app=$URL --start-fullscreen --check-for-update-interval=31536000 --overscroll-history-navigation=0 --disable-pinch --disable-crash-reporter" > ~/autostart.sh
 chmod +x ~/autostart
 chmod +x ~/autostart.sh
 
