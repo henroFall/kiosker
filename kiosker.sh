@@ -40,6 +40,7 @@ do
 done
 input=""
 
+# Prompt for Kiosk URL
 echo -e "Here goes the Kiosk installer... You need to enter a URL here for the Kiosk to launch to: "
 read URL
 echo
@@ -66,6 +67,8 @@ echo -e "The URL is set to: $URL \e[0m"
  esac
 done
 URL=\"$URL\"
+
+#Update OS, install desktop, install utilities, cleanup
 echo -e "OK - URL set. Doing my business now, hang on..."
 sudo apt -y update
 sudo apt -y dist-upgrade
@@ -77,18 +80,16 @@ sudo apt -y remove  geany thonny qpdfview xarchiver gpicview galculator mousepad
 sudo apt -y autoremove
 sudo apt -y clean
 
+# Make Chrome start at boot
 mkdir -p ~/.config/lxsession/LXDE-pi
-
-echo -e "@lxpanel --profile LXDE-pi
+echo "@lxpanel --profile LXDE-pi
 @pcmanfm --desktop --profile LXDE-pi
 @xscreensaver -no-splash
 @xset s off
 @xset dpms 0 0 0
 @/home/pi/autostart.sh" > ~/.config/lxsession/LXDE-pi/autostart
-
 ln -s .config/lxsession/LXDE-pi/autostart ~/autostart
-
-echo -e "#!/bin/bash
+echo "#!/bin/bash
 
 while ! ip route | grep -q -e \"eth0\" -e \"wlan0\"; do
     notify-send -t 900 \"Waiting for network connection...\" &> /dev/null
@@ -100,14 +101,15 @@ notify-send -t 3000 \"Starting browser...\" &> /dev/null
 chromium-browser --incognito --app=$URL --start-fullscreen --check-for-update-interval=31536000 --overscroll-history-navigation=0 --disable-pinch" > ~/autostart.sh
 chmod +x ~/autostart
 chmod +x ~/autostart.sh
-echo -e We are going to set the VNC password now to be sure you are in a compatible mode:
 
+# Change VNC to password mode (make compatible with tightvnc)
+echo -e We are going to set the VNC password now to be sure you are in a compatible mode:
 sudo echo "
 Authentication=VncAuth
 Encryption=AlwaysOff
 Password=e0fd0472492935da" >> /root/.vnc/config.d/vncserver-x11
-
 sudo vncpasswd -service
+
 # Turn off screen saver
 saver="mode:		off"
 saverx="mode:		random"
