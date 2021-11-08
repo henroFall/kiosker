@@ -97,6 +97,8 @@ done
 
 notify-send -t 500 \"Connected.\" &> /dev/null
 notify-send -t 3000 \"Starting browser...\" &> /dev/null
+sed -i \'s/\"exited_cleanly\":false/\"exited_cleanly\":true/\' ~/.config/chromium/\'Local State\'
+sed -i \'s/\"exited_cleanly\":false/\"exited_cleanly\":true/; s/\"exit_type\":\"[^\"]\+\"/\"exit_type\":\"Normal\"/\' ~/.config/chromium/Default/Preferences
 chromium-browser --incognito --app=$URL --start-fullscreen --check-for-update-interval=31536000 --overscroll-history-navigation=0 --disable-pinch --disable-crash-reporter" > ~/autostart.sh
 chmod +x ~/autostart
 chmod +x ~/autostart.sh
